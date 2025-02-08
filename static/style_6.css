@@ -1,0 +1,199 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.main-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Left panel (Run button, operation categories, and OPC-UA structure) */
+.left-panel {
+  width: 25%;
+  background-color: #f4f4f4;
+  overflow-y: auto;
+  padding: 10px;
+  border-right: 1px solid #ccc;
+}
+
+/* Run button styling */
+#runButton {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#runButton:hover {
+  background-color: #45a049;
+}
+
+/* Canvas container: allow scrolling if boxes overflow */
+.canvas-container {
+  position: relative;
+  flex: 1;
+  overflow: auto;
+}
+
+/* Background canvas where boxes are dropped */
+#logicCanvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+  z-index: 1;
+}
+
+/* Overlay canvas for connection lines */
+#linesCanvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Draggable list items (sidebar items) */
+.draggable {
+  margin: 5px 0;
+  padding: 10px;
+  background-color: #ddd;
+  border-radius: 4px;
+  cursor: grab;
+}
+
+/* Operation box styling */
+.operation-box {
+  width: 220px;
+  height: 290px;
+  background-color: lightblue;
+  border-radius: 5px;
+  padding: 10px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  z-index: 3;
+  border: 1px solid #aaa;
+  cursor: move;
+  transition: height 0.2s;
+}
+
+/* Title bar (operation name) styling */
+.operation-name {
+  font-weight: bold;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: default;
+}
+
+/* Toggle button styling with Safari support */
+.toggle-btn {
+  font-size: 16px;
+  cursor: pointer;
+-webkit-user-select: none;
+  user-select: none;
+  margin-left: auto;
+}
+
+/* Delete button styling */
+.delete-btn {
+  font-size: 16px;
+  color: red;
+  cursor: pointer;
+-webkit-user-select: none;
+  user-select: none;
+  margin-left: 10px;
+}
+
+/* Output display area */
+.output-value {
+  text-align: center;
+  margin-bottom: 5px;
+  font-weight: bold;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+
+/* Output handle (draggable circle) */
+.output-handle {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #333;
+  cursor: grab;
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.output-handle.dragging {
+  background: orange;
+}
+
+/* Resize handle styling */
+.resize-handle {
+  width: 12px;
+  height: 12px;
+  background-color: #666;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  cursor: se-resize;
+}
+
+/* Inputs container */
+.inputs-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Input element styling */
+.input {
+  margin: 3px 0;
+  font-size: 14px;
+  color: red;
+  cursor: pointer;
+  border: 1px solid transparent;
+  padding: 3px;
+}
+
+/* Collapsible items in the sidebar */
+.collapsible {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Nested lists for collapsible items */
+.nested {
+  display: none;
+  margin-left: 15px;
+}
+
+.active > .nested {
+  display: block !important;
+}
+
+/* Styles for minimized boxes */
+.operation-box.minimized {
+  height: auto; /* Only show the title bar */
+  cursor: default;
+}
