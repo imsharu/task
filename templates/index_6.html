@@ -4,12 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>OPC-UA & Logic Engine</title>
-  <!-- Link to external CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='style_6.css') }}" />
 </head>
 <body>
   <div class="main-container">
-    <!-- LEFT PANEL: Run Button, Operation Categories, and OPC-UA Structure -->
     <div class="left-panel">
       <button id="runButton">Run</button>
       <ul id="logicalOperations"></ul>
@@ -18,17 +16,14 @@
       <ul id="otherOperations"></ul>
       <hr />
       <h3>OPC-UA Structure</h3>
+      <!-- Sidebar displays tag names; each tag carries its nodeId and tagType -->
       <ul id="opcStructure"></ul>
     </div>
-
-    <!-- RIGHT SIDE: Container for canvases and operation boxes -->
     <div class="canvas-container">
       <canvas id="logicCanvas"></canvas>
       <canvas id="linesCanvas"></canvas>
     </div>
   </div>
-
-  <!-- Load external JS -->
   <script src="{{ url_for('static', filename='script_6.js') }}"></script>
 </body>
 </html>
